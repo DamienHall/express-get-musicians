@@ -11,12 +11,10 @@ const {seedMusician} = require("./seedData");
 
 
 describe('./musicians endpoint', () => {
-    // Write your tests here
-    
-    
-
-
-
-
-    
-})
+    test("Testing musicians endpoint", async () => {
+        const response = await request(app).get("/musicians");
+        const data = JSON.parse(response.text);
+        expect(response.statusCode).toBe(200);
+        expect(data[0].name).toBe("Mick Jagger");
+    });
+});
