@@ -17,4 +17,11 @@ describe('./musicians endpoint', () => {
         expect(response.statusCode).toBe(200);
         expect(data[0].name).toBe("Mick Jagger");
     });
+
+    test("Testing musicians endpoint with :id", async () => {
+        const response = await request(app).get("/musicians/1");
+        const data = JSON.parse(response.text);
+        expect(response.statusCode).toBe(200);
+        expect(data.name).toBe("Mick Jagger");
+    });
 });
